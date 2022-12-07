@@ -46,6 +46,7 @@ pipeline {
                 expression { params.RUN }
             }
             steps {
+                sh 'pwd'
                 sh './deilver.sh'
             }
         }
