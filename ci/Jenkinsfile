@@ -56,7 +56,7 @@ pipeline {
             steps {
                 sh "echo Build ${BUILD_NAME} completed successfully"
                 sh 'echo I have now completed ACIT 4850!'
-                sh 'Raihan Kheraj, A01196507, Group 16'
+                sh 'echo Raihan Kheraj, A01196507, Group 16'
             }
         }
     }
