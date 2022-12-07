@@ -23,7 +23,7 @@ pipeline {
         stage('Code Quantity') {
             steps {
                 sh 'echo Counting lines in App.java'
-                sh 'wc -l App.java'
+                sh 'wc -l ../src/main/java/com/mycompany/app/App.java'
                 sh 'echo Code Quantity Check Complete'
             }
 
