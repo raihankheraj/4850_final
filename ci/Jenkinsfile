@@ -16,7 +16,7 @@ pipeline {
             steps {
                 sh 'echo Starting Build...'
                 sh 'mvn -B -DskipTests clean install'
-                sh 'echo  Build Complete'
+                sh 'echo Build Complete'
             }
         }
 
@@ -52,7 +52,7 @@ pipeline {
         stage('Build Results') {
             steps {
                 sh "echo Build ${BUILD_NAME} completed successfully"
-                sh 'echo I hav enow completed ACIT 4850!'
+                sh 'echo I have now completed ACIT 4850!'
                 sh 'Raihan Kheraj, A01196507, Group 16'
             }
         }
