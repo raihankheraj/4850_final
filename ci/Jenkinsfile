@@ -24,7 +24,7 @@ pipeline {
             steps {
                 sh 'echo Counting lines in App.java'
                 sh 'pwd'
-                sh 'wc -l /src/main/java/com/mycompany/app/App.java'
+                sh 'wc -l src/main/java/com/mycompany/app/App.java'
                 sh 'echo Code Quantity Check Complete'
             }
 
