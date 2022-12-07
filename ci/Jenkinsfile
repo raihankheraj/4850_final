@@ -46,7 +46,7 @@ pipeline {
                 expression { params.RUN }
             }
             steps {
-                sh '../deilver.sh'
+                sh 'deilver.sh'
             }
         }
 
@@ -57,20 +57,6 @@ pipeline {
                 sh 'Raihan Kheraj, A01196507, Group 16'
             }
         }
-
-
-
-        stage('Deliver') {
-            when {
-                expression { params.DEPLOY }
-            }
-            steps {
-                sh "docker run myapp:latest"
-                // sh './ci/scripts/deliver.sh'
-            }
-        }
-
-    
     }
 }
 
