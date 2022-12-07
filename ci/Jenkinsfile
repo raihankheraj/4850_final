@@ -1,0 +1,75 @@
+pipeline {
+    /*
+    Raihan Kheraj 
+    A01196507
+    December 7, 2022
+    4850 Final Java Pipeline
+    */
+    agent any
+    parameters {
+        booleanParam(defaultValue: false, description: 'Whether to Run the Code', name: 'RUN')
+        string(defaultValue: 'Latest', description: 'Name of the build', name: 'BUILD_NAME')
+    }
+     
+    stages {
+        stage('Build') {
+            steps {
+                sh 'echo Starting Build...'
+                sh 'mvn -B -DskipTests clean install'
+                sh 'echo  Build Complete'
+            }
+        }
+
+        stage('Code Quantity') {
+            steps {
+                sh 'echo Counting lines in App.java'
+                sh 'wc -l App.java'
+                sh 'echo Code Quantity Check Complete'
+            }
+
+        }
+
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+
+        }
+        stage('Run') {
+            when {
+                expression { params.RUN }
+            }
+            steps {
+                sh '../deilver.sh'
+            }
+        }
+
+        stage('Build Results') {
+            steps {
+                sh "echo Build ${BUILD_NAME} completed successfully"
+                sh 'echo I hav enow completed ACIT 4850!'
+                sh 'Raihan Kheraj, A01196507, Group 16'
+            }
+        }
+
+
+
+        stage('Deliver') {
+            when {
+                expression { params.DEPLOY }
+            }
+            steps {
+                sh "docker run myapp:latest"
+                // sh './ci/scripts/deliver.sh'
+            }
+        }
+
+    
+    }
+}
+
